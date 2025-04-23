@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redirecting…</title>
+    <script>
+      setTimeout(function () {
+        window.location.href = "https://apps.apple.com/app/idYOUR_APP_ID"; // fallback to App Store
+      }, 2500);
+
+      window.location.href = "myapp://profle/123"; // your custom scheme
+    </script>
+  </head>
+  <body>
+    <p>Opening the app…</p>
+  </body>
+</html>
