@@ -4,7 +4,7 @@
     "details": [
       {
         "appID": "6SPM4773NX.co.unthinkable.nextnative.audience",
-        "paths": ["/session/host"]
+        "paths": ["*"]
       }
     ]
   }
