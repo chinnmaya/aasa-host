@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redirecting…</title>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get('id');
+      const screentype = urlParams.get('screentype');
+
+      // Build the custom link based on screentype
+      let customLink = 'myapp://';
+
+      if (screentype === 'host') {
+        customLink += `session/host/${id}`;
+      } else if (screentype === 'viewer') {
+        customLink += `event/EventDetails/${id}`;
+      } else if (screentype === 'profile') {
+        customLink += `profile/${id}`;
+      } else {
+        // Default fallback route
+        customLink += `home`;
+      }
+
+      // Detect platform
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      const isAndroid = /android/i.test(userAgent);
+      const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+
+      // Store URLs
+      const iOSAppStoreLink = "https://apps.apple.com/app/idYOUR_IOS_APP_ID";
+      const androidPlayStoreLink = "https://play.google.com/store/apps/details?id=YOUR_ANDROID_PACKAGE_NAME";
+
+      // Fallback after delay
+      setTimeout(function () {
+        if (isIOS) {
+          window.location.href = iOSAppStoreLink;
+        } else if (isAndroid) {
+          window.location.href = androidPlayStoreLink;
+        } else {
+          window.location.href = "https://ullu.app/";
+        }
+      }, 2500);
+
+      // Attempt to open the app
+      window.location.href = customLink;
+    </script>
+  </head>
+  <body>
+    <p>Opening the app…</p>
+  </body>
+</html>
